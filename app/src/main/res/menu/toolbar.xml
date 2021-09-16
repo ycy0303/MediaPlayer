@@ -17,4 +17,8 @@
         android:icon="@drawable/single"
         app:showAsAction="never"
         android:title="@string/single" />
+    <item
+        android:id="@+id/delete_play"
+        app:showAsAction="never"
+        android:title="删除歌曲" />
 </menu>

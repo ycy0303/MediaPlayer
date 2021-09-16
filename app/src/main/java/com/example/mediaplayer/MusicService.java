@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -13,10 +14,13 @@ import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.RemoteViews;
+import android.widget.TextView;
 
 import androidx.core.app.NotificationCompat;
 
+import com.bumptech.glide.Glide;
 import com.example.musicplayer.R;
 
 import java.io.IOException;
@@ -38,10 +42,12 @@ public class MusicService extends Service {
     private NotificationManager notificationManager;
     private BroadcastReceiver musicReceiver;
 
+
     //定义播放模式
     private boolean singlePlay=false;//单曲循环
     private boolean randomPlay=false;//随机播放
     private boolean sequencePlay=false;//顺序播放
+
 
     public static int getPos() {
         return pos;
@@ -145,6 +151,11 @@ public class MusicService extends Service {
                 setMediaPlayer(pos);
                 updateNotification();
             }
+        }
+
+        //deleteMusic()方法控制删除当前音乐
+        public int deleteMusic(){
+            return pos;
         }
     }
 
